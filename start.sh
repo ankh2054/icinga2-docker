@@ -133,7 +133,7 @@ set_mysql_root_pw
 
 # Prepare directories for Icinga2
 echo "Prepating icinga directories"
-/tmp/prepare-dirs.sh /etc/icinga2/icinga2.sysconfig 
+chmod u+x /tmp/prepare-dirs.sh && /tmp/prepare-dirs.sh /etc/icinga2/icinga2.sysconfig
 
 # Start Supervisor 
 echo "Starting Supervisor"
