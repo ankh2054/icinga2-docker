@@ -51,6 +51,7 @@ ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/php-fpm.conf /etc/php/7.0/fpm/
 ADD files/supervisord.conf /etc/supervisord.conf
 ADD files/my.cnf /etc/mysql/my.cnf
+ADD files/prepare-dirs.sh /tmp/prepare-dirs.sh
 
 # Final fixes
 #RUN true \
