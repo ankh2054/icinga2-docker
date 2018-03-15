@@ -24,7 +24,7 @@ ENV PACKAGES="\
   linux-headers \
   build-base \
   ca-certificates \
-  php \ 
+  php7 \ 
   icinga2 \
   monitoring-plugins \
   php7-intl \ 
