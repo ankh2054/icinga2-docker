@@ -9,6 +9,7 @@ ENV PACKAGES="\
   ca-certificates \
   php7 \ 
   icinga2 \
+  icingaweb2 \
   monitoring-plugins \
   php7-intl \ 
   php7-imagick \ 
