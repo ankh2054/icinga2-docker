@@ -30,7 +30,8 @@ ENV PACKAGES="\
   php7-intl \ 
   php7-imagick \ 
   php7-gd \ 
-  php7-mysql \
+  php7-pdo_mysql \
+  php7-mysqli \
   php7-curl \
   php7-mbstring \
   mysql \ 
