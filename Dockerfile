@@ -37,6 +37,15 @@ ENV PACKAGES="\
   mysql-client\
   supervisor \
   mariadb-dev \
+  curl \
+  dnsutils \
+  gnupg \
+  mailutils \
+  snmp \
+  ssmtp \
+  unzip \
+  wget \
+  nginx \ 
 "
 
 
@@ -65,6 +74,10 @@ ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/php-fpm.conf /etc/php/7.0/fpm/
 ADD files/supervisord.conf /etc/supervisord.conf
 ADD files/my.cnf /etc/mysql/my.cnf
+
+# Final fixes
+RUN true \
+    && sed -i 's/vars\.os.*/vars.os = "Docker"/' /etc/icinga2/conf.d/hosts.conf 
 
 # Entrypoint
 ADD start.sh /
