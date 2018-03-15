@@ -10,6 +10,21 @@
 
 
 		$ docker build https://github.com/ankh2054/icinga2-docker.git -t icinga
+		
+		
+
+
+# Building the container 
+
+		$ docker run  --name icinga --expose 80 \
+		 -d -e "VIRTUAL_HOST=supermon.eos42.io" \
+		 -e "LETSENCRYPT_HOST=supermon.eos42.io" \
+		 -e "LETSENCRYPT_EMAIL=charles@eos42.io" \
+		 -e 'DB_NAME=icinga' \
+		 -e 'DB_USER=icinga' \
+		 -e 'DB_PASS=icinga' \
+		 -e 'ROOT_PWD=password' \
+		icinga
 
 
 
