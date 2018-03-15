@@ -79,6 +79,28 @@ create_database() {
   
 }
 
+db_ido_mysql(){
+# Creatingt icinga MYSQL connection file.
+rm -rf /etc/icinga2/features-available/ido-mysql.conf
+cat > /etc/icinga2/features-available/ido-mysql.conf
+ <<EOF
+library "db_ido_mysql"
+
+object IdoMysqlConnection "mysql-ido" {
+  host = "127.0.0.1"
+  port = 3306
+  user = "${DB_USER}"
+  password = "${DB_PASS}"
+  database = "${DB_NAME}"
+
+  cleanup = {
+    downtimehistory_age = 48h
+    contactnotifications_age = 31d
+  }
+}
+EOF
+}
+
 set_mysql_root_pw() {
     # Check if root password has already been set.
     r=`/usr/bin/mysqladmin -uroot  status`
@@ -102,6 +124,7 @@ create_run_dir
 create_log_dir
 mysql_default_install
 create_database
+db_ido_mysql
 set_mysql_root_pw
 
 # Testing
