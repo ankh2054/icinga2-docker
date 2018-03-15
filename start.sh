@@ -130,6 +130,11 @@ set_mysql_root_pw
 
 # Testing
 tail -f /dev/null
+
+# Prepare directories for Icinga2
+echo "Prepating icinga directories"
+/tmp/prepare-dirs.sh /etc/icinga2/icinga2.sysconfig 
+
 # Start Supervisor 
-#echo "Starting Supervisor"
-#/usr/bin/supervisord -n -c /etc/supervisord.conf
+echo "Starting Supervisor"
+/usr/bin/supervisord -n -c /etc/supervisord.conf
