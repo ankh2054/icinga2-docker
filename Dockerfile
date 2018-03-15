@@ -1,7 +1,6 @@
 
 FROM alpine:3.7
 
-
 ENV PACKAGES="\
   dumb-init \
   musl \
@@ -53,8 +52,8 @@ ADD files/supervisord.conf /etc/supervisord.conf
 ADD files/my.cnf /etc/mysql/my.cnf
 
 # Final fixes
-RUN true \
-    && sed -i 's/vars\.os.*/vars.os = "Docker"/' /etc/icinga2/conf.d/hosts.conf 
+#RUN true \
+    #&& sed -i 's/vars\.os.*/vars.os = "Docker"/' /etc/icinga2/conf.d/hosts.conf 
 
 # Entrypoint
 ADD start.sh /
