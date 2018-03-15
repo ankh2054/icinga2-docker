@@ -129,7 +129,7 @@ db_ido_mysql
 set_mysql_root_pw
 
 # Testing
-tail -f /dev/null
+#tail -f /dev/null
 
 # Prepare directories for Icinga2
 echo "Prepating icinga directories"
