@@ -2,22 +2,6 @@
 FROM alpine:3.7
 
 
-# Install needed packages. Notes:
-#   * dumb-init: a proper init system for containers, to reap zombie children
-#   * musl: standard C library
-#   * linux-headers: commonly needed, and an unusual package name from Alpine.
-#   * build-base: used so we include the basic development packages (gcc)
-#   * bash: so we can access /bin/bash - REMOVED to use build in busybox instead
-#   * ca-certificates: for SSL verification during Pip and easy_install
-#   * python: the binaries themselves
-#   * python-dev: are used for gevent e.g.
-#   * py-setuptools: required only in major version 2, installs easy_install so we can install Pip.
-#   * mysql: Mysql server.
-#   * mysql-client: Required for django to use mysql as database.
-#   * supervisor: To autostart and ensure services stay running.
-#   * mariadb-dev: Required by - pip install mysqlclient.
-#   * nginx: To serve Django static content and proxy connections back to Django.
-
 ENV PACKAGES="\
   dumb-init \
   musl \
@@ -42,7 +26,7 @@ ENV PACKAGES="\
   bind-tools \
   gnupg \
   mailutils \
-  snmp \
+  net-snmp \
   ssmtp \
   unzip \
   wget \
