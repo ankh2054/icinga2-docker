@@ -17,6 +17,7 @@ ENV PACKAGES="\
   php7-mysqli \
   php7-curl \
   php7-mbstring \
+  php7-fpm \
   mysql \ 
   mysql-client\
   supervisor \
