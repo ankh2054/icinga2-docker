@@ -93,8 +93,7 @@ create_database() {
 db_ido_mysql(){
 # Creating icinga MYSQL connection file.
 echo "Creating icinga MYSQL connection file"
-cat > /etc/icinga2/features-available/ido-mysql.conf
- <<EOF
+cat > /etc/icinga2/features-available/ido-mysql.conf<<EOF
 library "db_ido_mysql"
 
 object IdoMysqlConnection "mysql-ido" {
