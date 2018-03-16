@@ -153,6 +153,21 @@ icinga_configure(){
 
 icinga_director(){
 git clone https://github.com/Icinga/icingaweb2-module-director /usr/share/webapps/icingaweb2/modules/director
+
+echo "Create director resource"
+cat << EOF | tee -a /etc/icingaweb2/resources.ini
+
+[icinga_director]
+type = "db"
+db = "mysql"
+host = "localhost"
+port = "3306"
+dbname = "director"
+username = "director"
+password = "${DB_WEB_PASS}"
+charset = "UTF8"
+persistent = "0"
+EOF
 }
 
 create_data_dir
