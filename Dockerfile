@@ -10,6 +10,7 @@ ENV PACKAGES="\
   php7 \ 
   icinga2 \
   icingaweb2 \
+  git \
   monitoring-plugins \
   php7-intl \ 
   php7-imagick \ 
