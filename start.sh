@@ -152,6 +152,10 @@ icinga_configure(){
 
 }
 
+icinga_director(){
+git clone https://github.com/Icinga/icingaweb2-module-director /usr/share/webapps/icingaweb2/modules/director
+}
+
 create_data_dir
 create_run_dir
 create_log_dir
@@ -161,6 +165,7 @@ db_ido_mysql
 set_mysql_root_pw
 update_php_ini
 icinga_configure
+icinga_director
 
 
 
