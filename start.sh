@@ -141,6 +141,9 @@ icinga_configure(){
   /usr/share/webapps/icingaweb2/bin/icingacli setup config directory --group icingaweb2;
   echo "add nginx to icingaweb2 group"
   adduser nginx icingaweb2
+  icinga2 api setup
+  echo "Take a note of this password, for the setup later"
+  cat /etc/icinga2/conf.d/api-users.conf
 
 }
 
