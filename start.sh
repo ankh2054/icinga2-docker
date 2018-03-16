@@ -70,6 +70,11 @@ create_database() {
           mysql -uroot  -e  "CREATE DATABASE ${DB_WEB_NAME};"
           mysql -uroot  -e  "GRANT USAGE ON *.* TO ${DB_WEB_USER}@localhost IDENTIFIED BY '${DB_WEB_PASS}';"
           mysql -uroot  -e  "GRANT ALL PRIVILEGES ON ${DB_WEB_NAME}.* TO ${DB_WEB_USER}@localhost;"
+         
+         echo "Creating director database and granting access"
+          mysql -uroot -e "CREATE DATABASE director CHARACTER SET 'utf8';"
+          mysql -uroot -e "GRANT ALL ON director.* TO director@localhost IDENTIFIED BY '${DB_WEB_PASS}';"
+
           
          echo "Imporing Icinga ido modules"
           mysql -u root ${DB_NAME} <  /usr/share/icinga2-ido-mysql/schema/mysql.sql
