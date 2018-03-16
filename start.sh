@@ -65,6 +65,12 @@ create_database() {
           mysql -uroot  -e  "CREATE DATABASE ${DB_NAME};"
           mysql -uroot  -e  "GRANT USAGE ON *.* TO ${DB_USER}@localhost IDENTIFIED BY '${DB_PASS}';"
           mysql -uroot  -e  "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO ${DB_USER}@localhost;"
+          
+         echo "Creating database \"${DB_WEB_NAME}\" and granting access to \"${DB_WEB_USER}\" database."
+          mysql -uroot  -e  "CREATE DATABASE ${DB_WEB_NAME};"
+          mysql -uroot  -e  "GRANT USAGE ON *.* TO ${DB_WEB_USER}@localhost IDENTIFIED BY '${DB_WEB_PASS}';"
+          mysql -uroot  -e  "GRANT ALL PRIVILEGES ON ${DB_WEB_NAME}.* TO ${DB_WEB_USER}@localhost;"
+          
          echo "Imporing Icinga ido modules"
           mysql -u root ${DB_NAME} <  /usr/share/icinga2-ido-mysql/schema/mysql.sql
 
@@ -82,7 +88,6 @@ create_database() {
 db_ido_mysql(){
 # Creating icinga MYSQL connection file.
 echo "Creating icinga MYSQL connection file"
-rm -rf /etc/icinga2/features-available/ido-mysql.conf
 cat > /etc/icinga2/features-available/ido-mysql.conf
  <<EOF
 library "db_ido_mysql"
@@ -100,6 +105,7 @@ object IdoMysqlConnection "mysql-ido" {
   }
 }
 EOF
+cp /etc/icinga2/features-available/ido-mysql.conf /etc/icinga2/features-enabled/ido-mysql.conf
 }
 
 set_mysql_root_pw() {
