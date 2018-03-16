@@ -120,6 +120,18 @@ set_mysql_root_pw() {
     
 }
 
+
+icinga_configure(){
+
+  # Prepare directories for Icinga2 & Add nginx uyser to icingabwe2 GROUP
+  echo "Prepating icinga directories"
+  chmod u+x /tmp/prepare-dirs.sh && /tmp/prepare-dirs.sh /etc/icinga2/icinga2.sysconfig
+  /usr/share/webapps/icingaweb2/bin/icingacli setup config directory --group icingaweb2;
+  echo "add nginx to icingaweb2 group"
+  adduser nginx icingaweb2
+
+}
+
 create_data_dir
 create_run_dir
 create_log_dir
@@ -127,13 +139,9 @@ mysql_default_install
 create_database
 db_ido_mysql
 set_mysql_root_pw
+icinga_configure
 
-# Testing
-#tail -f /dev/null
 
-# Prepare directories for Icinga2
-echo "Prepating icinga directories"
-chmod u+x /tmp/prepare-dirs.sh && /tmp/prepare-dirs.sh /etc/icinga2/icinga2.sysconfig
 
 # Start Supervisor 
 echo "Starting Supervisor"
