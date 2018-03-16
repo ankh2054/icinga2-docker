@@ -121,6 +121,12 @@ set_mysql_root_pw() {
 }
 
 
+update_php_ini(){
+   # Updating some default PHP values
+  echo "Change default php.ini values"
+  sed -i "s/^;date.timezone =$/date.timezone = \"Europe\/London\"/" /etc/php7/php.ini |grep "^timezone" /etc/php7/php.ini
+ }
+
 icinga_configure(){
 
   # Prepare directories for Icinga2 & Add nginx uyser to icingabwe2 GROUP
@@ -139,6 +145,7 @@ mysql_default_install
 create_database
 db_ido_mysql
 set_mysql_root_pw
+update_php_ini
 icinga_configure
 
 
