@@ -168,6 +168,16 @@ password = "${DB_WEB_PASS}"
 charset = "UTF8"
 persistent = "0"
 EOF
+
+echo "Create director kickstart"
+cat << EOF | tee -a /etc/icingaweb2/modules/director/kickstart.ini
+[config]
+endpoint = supermon.eos42.io
+; host = 127.0.0.1
+; port = 5665
+username = director
+password = ***
+EOF
 }
 
 create_data_dir
