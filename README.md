@@ -26,6 +26,8 @@
 		 -e 'DB_WEB_NAME=icingaweb' \
 		 -e 'DB_WEB_USER=icingaweb' \
 		 -e 'DB_WEB_PASS=icingaweb' \
+		 -e 'DIRECTOR_USER=director' \
+		 -e 'DIRECTOR_PASS=director_password' \
 		 -e 'ROOT_PWD=password' \
 		icinga
 
