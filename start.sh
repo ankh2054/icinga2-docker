@@ -172,12 +172,26 @@ EOF
 echo "Create director kickstart"
 cat << EOF | tee -a /etc/icingaweb2/modules/director/kickstart.ini
 [config]
-endpoint = supermon.eos42.io
-; host = 127.0.0.1
-; port = 5665
+endpoint = ${VIRTUAL_HOST}
+host = 127.0.0.1
+port = 5665
 username = director
-password = ***
+password = 
 EOF
+
+
+echo "Creating director API user"
+cat > /etc/icinga2/conf.d/icinga2-api-user.conf<<EOF
+  object ApiUser "${DIRECTOR_USER}" {
+    password = "${DIRECTOR_PASS}"
+    permissions = [ "*" ]
+  }
+EOF
+
+
+echo "Enable director module"
+icingacli module enable director
+
 }
 
 create_data_dir
